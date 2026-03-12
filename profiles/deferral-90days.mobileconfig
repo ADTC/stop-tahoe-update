@@ -17,9 +17,9 @@
       <key>enforcedSoftwareUpdateMajorOSDeferredInstallDelay</key><integer>90</integer>
 
       <!-- Optional (set to your taste) -->
-      <key>forceDelayedSoftwareUpdates</key><true/>
-      <key>enforcedSoftwareUpdateMinorOSDeferredInstallDelay</key><integer>30</integer>
-      <key>enforcedSoftwareUpdateNonOSDeferredInstallDelay</key><integer>30</integer>
+      <key>forceDelayedSoftwareUpdates</key><false/>
+      <key>enforcedSoftwareUpdateMinorOSDeferredInstallDelay</key><integer>0</integer>
+      <key>enforcedSoftwareUpdateNonOSDeferredInstallDelay</key><integer>0</integer>
     </dict>
   </array>
 
