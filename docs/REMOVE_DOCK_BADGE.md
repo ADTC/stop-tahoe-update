@@ -6,6 +6,20 @@ If you're tired of the persistent red notification badge on the **System Setting
 
 > **Heads up:** You will likely need to repeat these steps after each macOS update (e.g. upgrading from 15.7.2 to 15.7.3).
 
+The setting is `dock-extra` on the pinned System Settings tile in `com.apple.dock`. System Settings must stay in the Dock for this to apply.
+
+---
+
+## Using the script
+
+From the repo root:
+
+```sh
+./scripts/toggle-dock-badge.sh
+```
+
+This toggles `dock-extra` through `defaults export` / `defaults import` so the preferences cache keeps the change, then restarts the Dock. Run it again to bring the badge back.
+
 ---
 
 ## Prerequisites
@@ -62,17 +76,13 @@ Go back to the filter/search box and type:
 dock
 ```
 
-Find the Item number you noted in the previous step. Under that item, locate the badge toggle set to **YES** and **uncheck** it (this sets it to **NO**).
+Find the Item number you noted in the previous step. Under that item, uncheck **`dock-extra`** (YES → NO). Prefs Editor writes this immediately — there is no separate save step.
 
-### 7. Save your changes
-
-Press **Cmd + S** to save the file.
-
-### 8. Close Prefs Editor
+### 7. Close Prefs Editor
 
 Close the window and quit **Prefs Editor**.
 
-### 9. Restart the Dock
+### 8. Restart the Dock
 
 Open **Terminal** and run:
 
@@ -80,7 +90,7 @@ Open **Terminal** and run:
 killall Dock
 ```
 
-### 10. Verify
+### 9. Verify
 
 The red badge should now be gone. You can optionally reboot to confirm the change persists.
 
@@ -88,7 +98,7 @@ The red badge should now be gone. You can optionally reboot to confirm the chang
 
 ## Reverting
 
-To bring the badge back, repeat the steps above but re-check the value back to **YES**, save, and run `killall Dock` again.
+Run `./scripts/toggle-dock-badge.sh` again, or re-check `dock-extra` to **YES** in Prefs Editor and run `killall Dock`.
 
 ---
 

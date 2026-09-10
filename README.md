@@ -17,6 +17,8 @@ _A community-led effort to block unwanted macOS upgrades (e.g. Sequoia → Tahoe
 
 Apple allows deferring major macOS upgrades using configuration profiles with official `com.apple.applicationaccess` keys. This repo provides a **90-day deferral profile** along with scripts to install, check status, and uninstall it.
 
+A separate script can hide the red System Settings Dock badge.
+
 <details>
 <summary>🔍 What the deferral profile actually does</summary>
 
@@ -67,7 +69,17 @@ Or to delay only major updates 90 days and allow minor upates to occur as usual,
 ./scripts/status.sh
 ```
 
-### 4. Remove later if needed
+### 4. Hide the System Settings Dock badge (optional)
+
+The deferral profile does not remove the red notification badge on the System Settings Dock icon. Toggle it with:
+
+```bash
+./scripts/toggle-dock-badge.sh
+```
+
+System Settings must be pinned in the Dock. Run the script again to restore the badge. See [Remove the Red Badge from the System Settings Dock Icon](./docs/REMOVE_DOCK_BADGE.md) for details and a Prefs Editor walkthrough.
+
+### 5. Remove later if needed
 
 ```bash
 ./scripts/uninstall-profile.sh
@@ -77,7 +89,7 @@ Or to delay only major updates 90 days and allow minor upates to occur as usual,
 
 ## 📖 Guides
 
-- [Remove the Red Badge from the System Settings Dock Icon](./docs/REMOVE_DOCK_BADGE.md) — Get rid of the persistent notification badge on the System Settings icon in your Dock
+- [Remove the Red Badge from the System Settings Dock Icon](./docs/REMOVE_DOCK_BADGE.md) — hide the persistent notification badge on the System Settings Dock icon, or toggle it with [`scripts/toggle-dock-badge.sh`](./scripts/toggle-dock-badge.sh)
 
 ---
 
@@ -86,7 +98,7 @@ Or to delay only major updates 90 days and allow minor upates to occur as usual,
 The 90-day deferral profile works well today, but there are open questions the community can help answer:
 
 - **How long does the deferral actually last?** Apple says 90 days, but anecdotal experience suggests it may persist longer. More data points would be valuable.
-- **Can we suppress the Settings badge and upgrade prompts?** The red notification badge and "Install Now" prompts are a separate annoyance.
+- **Can we suppress upgrade prompts?** The Dock badge can be toggled (see above); “Install Now” prompts are still a separate annoyance.
 - **Are there other safe, reversible approaches?** If you've found something that works, we'd love to hear about it.
 - **What changes with new macOS versions?** Apple may change deferral behavior in future releases.
 
