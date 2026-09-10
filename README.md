@@ -1,5 +1,15 @@
 # 🛑 Stop Tahoe Update
 
+> [!WARNING]
+> **This project’s deferral profile no longer reliably hides Tahoe on recent Sequoia versions.**
+>
+> Starting with macOS Sequoia **15.7.5**, Apple stopped honoring separate major vs. minor update deferrals. The profile may still install, but Tahoe can reappear in Software Update. Discussion and workarounds: [issue #19](https://github.com/travisvn/stop-tahoe-update/issues/19).
+>
+> If you need something that still works on current Sequoia, these unofficial alternatives are what people have been using. They are **not** Apple-supported — read each project before you use it.
+>
+> - **[noTahoe](https://github.com/ADTC/noTahoe)** — hides Tahoe with Apple’s MobileAsset audience setting, while keeping native XProtect/MRT security updates.
+> - **[Tanoe](https://github.com/DrDonk/Tanoe)** — blocks `gdmf.apple.com` so OS updates (Tahoe **and** Sequoia point releases) stop appearing. Safari and similar updates still work; turn the block off (or use Tanoe’s installer helper) when you want a Sequoia 15.x update.
+
 _A community-led effort to block unwanted macOS upgrades (e.g. Sequoia → Tahoe)._
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -17,6 +27,8 @@ _A community-led effort to block unwanted macOS upgrades (e.g. Sequoia → Tahoe
 
 Apple allows deferring major macOS upgrades using configuration profiles with official `com.apple.applicationaccess` keys. This repo provides a **90-day deferral profile** along with scripts to install, check status, and uninstall it.
 
+On Sequoia **15.7.5 and later** this no longer reliably hides Tahoe — see the warning at the top.
+
 A separate script can hide the red System Settings Dock badge.
 
 <details>
@@ -29,7 +41,7 @@ It uses Apple's official deferral keys:
 <key>enforcedSoftwareUpdateMajorOSDeferredInstallDelay</key><integer>90</integer>
 ```
 
-These settings hide major upgrades from Software Update for **up to 90 days** according to Apple's documentation. In practice, the deferral appears to continue working beyond that window — but your mileage may vary.
+These settings hide major upgrades from Software Update for **up to 90 days** according to Apple's documentation. That held on earlier Sequoia releases; on **15.7.5 and later** Apple changed the behavior (see the warning at the top).
 
 </details>
 
@@ -95,7 +107,7 @@ System Settings must be pinned in the Dock. Run the script again to restore the 
 
 ## 🧩 What's Next? (Help Wanted)
 
-The 90-day deferral profile works well today, but there are open questions the community can help answer:
+The 90-day deferral profile is unreliable on Sequoia 15.7.5 and later (see the warning at the top). Open questions the community can still help answer:
 
 - **How long does the deferral actually last?** Apple says 90 days, but anecdotal experience suggests it may persist longer. More data points would be valuable.
 - **Can we suppress upgrade prompts?** The Dock badge can be toggled (see above); “Install Now” prompts are still a separate annoyance.
