@@ -30,7 +30,7 @@ else
   echo "Opening profile in System Settings for manual approval..."
   open -a "/System/Library/CoreServices/ProfileHelper.app" "$TEMP_PROFILE"
   open -a "/System/Applications/System Settings.app"
-  echo "Press Enter after you've approved (or declined) the profile in System Settings."
-  # shellcheck disable=SC2034 suppress "unused variable" message.
-  read -r junk
+  echo "Approve the profile in System Settings in General → Device Management."
+  echo "HINT: Clicking on 'Profile Downloaded' in the sidebar will take you there."
+  echo "NOTE: You must do this yourself. I can't do this for you so I'm exiting now."
 fi
