@@ -28,9 +28,9 @@ if sudo /usr/bin/profiles install -type configuration -path "$TEMP_PROFILE" 2>/d
   echo "Done. Check System Settings → Privacy & Security → Profiles to verify."
 else
   echo "Opening profile in System Settings for manual approval..."
-  open -a "/System/Library/CoreServices/ProfileHelper.app" "$TEMP_PROFILE"
-  open -a "/System/Applications/System Settings.app"
-  echo "Approve the profile in System Settings in General → Device Management."
-  echo "HINT: Clicking on 'Profile Downloaded' in the sidebar will take you there."
+  open -Wa "/System/Library/CoreServices/ProfileHelper.app" "$TEMP_PROFILE"
+  open "x-apple.systempreferences:com.apple.Profiles-Settings.extension"
+  echo ""
+  echo "Approve the profile in System Settings → General → Device Management."
   echo "NOTE: You must do this yourself. I can't do this for you so I'm exiting now."
 fi
